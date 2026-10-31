@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Northline Motors – Staff</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="common.js" defer></script>
+    <script src="staff.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true">N</span>
+            <div>
+                <p class="brand-name">Northline Motors</p>
+                <p class="brand-tagline">Staff workspace</p>
+            </div>
+        </div>
+        <nav aria-label="Main">
+            <a href="index.html">Showroom</a>
+            <a href="staff.html" aria-current="page">Staff</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="panel" aria-labelledby="vehicleFormHeading">
+            <h2 id="vehicleFormHeading">Add a vehicle</h2>
+            <form id="vehicleForm">
+                <div class="form-grid">
+                    <label for="vin">VIN
+                        <input type="text" id="vin" name="vin" minlength="17" maxlength="17"
+                               pattern="[A-HJ-NPR-Za-hj-npr-z0-9]{17}"
+                               title="17 letters and digits, without I, O, or Q" required>
+                    </label>
+                    <label for="make">Make
+                        <input type="text" id="make" name="make" maxlength="60" required>
+                    </label>
+                    <label for="model">Model
+                        <input type="text" id="model" name="model" maxlength="60" required>
+                    </label>
+                    <label for="modelYear">Year
+                        <input type="number" id="modelYear" name="modelYear"
+                               min="1980" max="2100" required>
+                    </label>
+                    <label for="trimLevel">Trim (optional)
+                        <input type="text" id="trimLevel" name="trimLevel" maxlength="60">
+                    </label>
+                    <label for="bodyType">Body type
+                        <select id="bodyType" name="bodyType" required></select>
+                    </label>
+                    <label for="color">Color
+                        <input type="text" id="color" name="color" maxlength="40" required>
+                    </label>
+                    <label for="price">Price ($)
+                        <input type="number" id="price" name="price" min="0" step="0.01" required>
+                    </label>
+                    <label for="mileage">Mileage
+                        <input type="number" id="mileage" name="mileage"
+                               min="0" max="2000000" required>
+                    </label>
+                    <label for="vehicleStatus">Status
+                        <select id="vehicleStatus" name="status" required>
+                            <option value="AVAILABLE">Available</option>
+                            <option value="RESERVED">Reserved</option>
+                            <option value="SOLD">Sold</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" id="saveVehicle">Add vehicle</button>
+                    <button type="button" id="cancelVehicleEdit" class="button-secondary" hidden>
+                        Cancel edit
+                    </button>
+                </div>
+            </form>
+            <p id="vehicleFormMessage" class="status" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="panel" aria-labelledby="inventoryHeading">
+            <div class="section-heading">
+                <h2 id="inventoryHeading">Inventory</h2>
+                <button type="button" id="refreshInventory" class="button-secondary">Refresh</button>
+            </div>
+            <p id="inventoryMessage" class="status" role="status" aria-live="polite">
+                Loading inventory…
+            </p>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Vehicle</th>
+                            <th scope="col">VIN</th>
+                            <th scope="col">Body / color</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Mileage</th>
+                            <th scope="col">Status</th>
+                            <th scope="col"><span class="visually-hidden">Actions</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventoryTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel" aria-labelledby="testDrivesHeading">
+            <div class="section-heading">
+                <h2 id="testDrivesHeading">Test-drive bookings</h2>
+                <label for="testDriveStatusFilter">Show
+                    <select id="testDriveStatusFilter">
+                        <option value="">All bookings</option>
+                        <option value="REQUESTED">Requested</option>
+                        <option value="CONFIRMED">Confirmed</option>
+                        <option value="COMPLETED">Completed</option>
+                        <option value="CANCELLED">Cancelled</option>
+                    </select>
+                </label>
+            </div>
+            <p id="testDriveMessage" class="status" role="status" aria-live="polite">
+                Loading bookings…
+            </p>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Vehicle</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Status</th>
+                            <th scope="col"><span class="visually-hidden">Actions</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="testDriveTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        Northline Motors is a sample dealership application.
+    </footer>
+</body>
+</html>

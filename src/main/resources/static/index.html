@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Northline Motors – Showroom</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="common.js" defer></script>
+    <script src="showroom.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true">N</span>
+            <div>
+                <p class="brand-name">Northline Motors</p>
+                <p class="brand-tagline">New and pre-owned vehicles</p>
+            </div>
+        </div>
+        <nav aria-label="Main">
+            <a href="index.html" aria-current="page">Showroom</a>
+            <a href="staff.html">Staff</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Find your next car</h1>
+            <p>Browse vehicles available today and book a test drive in a minute.</p>
+        </section>
+
+        <section class="panel" aria-labelledby="searchHeading">
+            <h2 id="searchHeading">Search inventory</h2>
+            <form id="searchForm" class="filter-bar" role="search">
+                <label for="makeFilter">Make
+                    <select id="makeFilter" name="make">
+                        <option value="">Any make</option>
+                    </select>
+                </label>
+                <label for="bodyTypeFilter">Body type
+                    <select id="bodyTypeFilter" name="bodyType">
+                        <option value="">Any type</option>
+                    </select>
+                </label>
+                <label for="maxPriceFilter">Maximum price ($)
+                    <input type="number" id="maxPriceFilter" name="maxPrice"
+                           min="0" step="500" placeholder="Any price">
+                </label>
+                <button type="submit">Search</button>
+                <button type="button" id="resetSearch" class="button-secondary">Reset</button>
+            </form>
+
+            <p id="resultsMessage" class="status" role="status" aria-live="polite">
+                Loading vehicles…
+            </p>
+            <div id="vehicleGrid" class="vehicle-grid"></div>
+        </section>
+
+        <section id="bookingPanel" class="panel" aria-labelledby="bookingHeading" hidden>
+            <h2 id="bookingHeading">Book a test drive</h2>
+            <p id="bookingVehicle" class="booking-vehicle"></p>
+            <form id="bookingForm">
+                <input type="hidden" id="bookingVehicleId" name="vehicleId">
+                <div class="form-grid">
+                    <label for="customerName">Full name
+                        <input type="text" id="customerName" name="customerName"
+                               autocomplete="name" maxlength="100" required>
+                    </label>
+                    <label for="customerEmail">Email
+                        <input type="email" id="customerEmail" name="email"
+                               autocomplete="email" maxlength="255" required>
+                    </label>
+                    <label for="customerPhone">Phone
+                        <input type="tel" id="customerPhone" name="phone"
+                               autocomplete="tel" pattern="[0-9+()\- ]{7,20}"
+                               title="7 to 20 digits, spaces, or + ( ) -" required>
+                    </label>
+                    <label for="preferredDate">Preferred date
+                        <input type="date" id="preferredDate" name="preferredDate" required>
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" id="submitBooking">Request test drive</button>
+                    <button type="button" id="cancelBooking" class="button-secondary">Cancel</button>
+                </div>
+            </form>
+            <p id="bookingMessage" class="status" role="status" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        Northline Motors is a sample dealership application.
+    </footer>
+</body>
+</html>
